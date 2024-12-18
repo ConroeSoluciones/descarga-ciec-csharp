@@ -5,7 +5,7 @@
     <RootNamespace>descarga-ciec-csharp</RootNamespace>
     <Authors>Conroe Soluciones</Authors>
     <Company>Conroe Soluciones</Company>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Title>descarga-ciec-csharp</Title>
     <Description>SDK para la descarga masiva de CFDI a través del servicio CIEC de CSFacturacion (Beta)</Description>
     <Copyright>Copyright (c) 2024 CSFacturacion &lt;sistemascs@csfacturacion.com&gt;</Copyright>
