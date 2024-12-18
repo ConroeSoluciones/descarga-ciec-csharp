@@ -42,7 +42,6 @@ jobs:
 
       - name: Generate NuGet package
         run: |
-          Set-ExecutionPolicy Bypass -Scope Process -Force; 
           iwr https://chocolatey.org/install.ps1 -UseBasicP -OutFile install-choco.ps1; 
           .\install-choco.ps1
           choco install netfx-4.8-devpack --confirm
