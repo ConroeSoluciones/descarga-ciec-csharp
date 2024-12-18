@@ -28,6 +28,10 @@
     <Optimize>True</Optimize>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\..\descarga-ciec-sdk\descarga-ciec-sdk\cs_logo.png">
       <Pack>True</Pack>
