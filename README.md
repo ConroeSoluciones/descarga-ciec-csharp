@@ -6,11 +6,10 @@ API sencilla para interactuar con el servicio de descarga masiva mediante CIEC d
 
 ## Installation
 
-Install descarga_ciec with npm
+Install descarga-ciec-csharp
 
 ```bash
-  npm install descarga_ciec_sdk
-  cd descarga_ciec_sdk
+NuGet\Install-Package descarga-ciec-csharp -Version 1.1.3
 ```
  ## Implementation
 
