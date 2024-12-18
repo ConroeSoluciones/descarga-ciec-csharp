@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>descarga_ciec_sdk</RootNamespace>
+    <Authors>Conroe Soluciones</Authors>
+    <Company>Conroe Soluciones</Company>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Title>Descarga-CIEC-SDK</Title>
+    <Description>SDK para la descarga masiva de CFDI a través del servicio CIEC de CSFacturacion</Description>
+    <Copyright>Copyright (c) 2024 CSFacturacion &lt;sistemascs@csfacturacion.com&gt;</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CSharpier.Core" Version="0.30.2" />
+    <PackageReference Include="Mono.HttpUtility" Version="1.0.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Polly" Version="8.0.0" />
+    <PackageReference Include="SharpCompress" Version="0.38.0" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.0" />
+  </ItemGroup>
+
+</Project>
