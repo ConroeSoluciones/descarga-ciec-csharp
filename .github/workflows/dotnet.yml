@@ -42,8 +42,7 @@ jobs:
 
       - name: Generate NuGet package
         run: |
-          dotnet pack descarga-ciec-csharp/ \
-          --configuration Release \
+          dotnet pack descarga-ciec-csharp/ --configuration Release \
           -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} \
           -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp \
           -o packages
