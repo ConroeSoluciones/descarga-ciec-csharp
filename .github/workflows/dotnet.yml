@@ -45,7 +45,7 @@ jobs:
           dotnet pack descarga-ciec-csharp/ \
           --configuration Release --no-restore \
           -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} \
-          -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp/ \
+          -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp \
           -o packages
 
       - name: Publish NuGet package
