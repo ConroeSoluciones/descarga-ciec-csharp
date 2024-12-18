@@ -193,7 +193,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
             string estado = "";
             var request = _requestCIECFactory.VerificarRequest(_idConsulta);
 
-            var response = _iCIECUserAgent.Enviar(request);
+            var response = await _iCIECUserAgent.EnviarAsync(request);
 
             if (response.Code == 404)
             {

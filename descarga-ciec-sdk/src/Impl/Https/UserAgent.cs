@@ -32,12 +32,12 @@ namespace descarga_ciec_sdk.src.Impl.Https
         /// <summary>
         ///
         /// </summary>
-        private string mediaType;
+        //private readonly string mediaType;
 
         /// <summary>
         ///
         /// </summary>
-        private JsonConverterCollection Json;
+        private readonly JsonConverterCollection Json = new JsonConverterCollection();
 
         /// <summary>
         ///
@@ -64,7 +64,7 @@ namespace descarga_ciec_sdk.src.Impl.Https
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<Response> OpenAsync(Request request)
+        public Task<Response> OpenAsync(Request request)
         {
             throw new Exception();
         }

@@ -315,7 +315,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <summary>
         /// Lista de folios de comprobantes.
         /// </summary>
-        private List<string> listFolios;
+       // private List<string> listFolios;
 
         /// <summary>
         /// Tipo de petición
@@ -330,7 +330,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <summary>
         /// Representa la búsqueda de la información del CFDi.
         /// </summary>
-        private bool isMetadata;
+        private bool isMetadata=false;
 
         /// <summary>
         ///
@@ -342,15 +342,6 @@ namespace descarga_ciec_sdk.src.Models
         /// </summary>
         private Credenciales credencialesSAT;
 
-        /// <summary>
-        ///
-        /// </summary>
-        private string data_id;
-
-        /// <summary>
-        ///
-        /// </summary>
-        private string data_key;
 
         /// <summary>
         ///

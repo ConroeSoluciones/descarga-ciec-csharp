@@ -54,18 +54,12 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
                     throw new ArgumentNullException("El path del ZIP  es requerido");
                 }
 
-                //string pathTemp = Path.Combine(path, "TEMP");
-
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
 
-                //if (!Directory.Exists(pathTemp))
-                //{
-                //    Directory.CreateDirectory(pathTemp);
-                //}
-
+              
                 string pathFull = path;
                 string pathFullConExtensionZip = Path.Combine(path, $"{nombreZIP}{EXTENSION_ZIP}");
 
@@ -75,9 +69,8 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
                 DescargarZipAsync(uri, tempPathFullConExtensionZiP, token).Wait();
                 DescomprimirAsync(tempPathFullConExtensionZiP, tempPathFull).Wait();
 
-                //  var listaXMLs =  extraerTodosArchivosDirectorioXMLList(tempPathFull, pathFull);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -133,7 +126,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 //  var listaXMLs =  extraerTodosArchivosDirectorioXMLList(tempPathFull, pathFull);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -201,7 +194,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 var listaXMLs = ExtraerTodosArchivosDirectorioXMLListAsync(tempPathFull, pathFull);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -238,7 +231,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 DescargarZip(uri, pathFull, token);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -260,7 +253,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
                     client.DownloadFile(new Uri(uri), @pathFull);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -302,7 +295,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 await DescargarZipAsync(uri, pathFull, token);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -343,7 +336,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 GuardarZIPFileBase64(pathFull, paqueteFromBase64String);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -384,7 +377,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 await GuardarZIPFileBase64Async(pathFull, paqueteFromBase64String);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -411,7 +404,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
                     await client.DownloadFileTaskAsync(new Uri(uri), @pathFull);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -431,7 +424,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
                     fs.Write(paqueteFromBase64String, 0, paqueteFromBase64String.Length);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -455,7 +448,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
                     await fs.WriteAsync(paqueteFromBase64String, 0, paqueteFromBase64String.Length);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -501,7 +494,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 isOk = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -556,7 +549,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                 isOk = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -591,7 +584,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
                         File.Copy(pathArchivo, pathSalidaArchivo);
                     }
                 }
-                catch (Exception ex) { }
+                catch (Exception) { }
             }
         }
 
@@ -632,7 +625,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                     listaXMLs.Add(pathArchivo);
                 }
-                catch (Exception ex) { }
+                catch (Exception) { }
             }
 
             return listaXMLs;
@@ -670,7 +663,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
 
                     listaXMLs.Add(pathArchivo);
                 }
-                catch (Exception ex) { }
+                catch (Exception) { }
             }
 
             return listaXMLs;
