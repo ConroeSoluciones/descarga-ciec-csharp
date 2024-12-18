@@ -42,6 +42,7 @@ jobs:
 
       - name: Generate NuGet package
         run: |
+          choco install dotnetfx --version=4.8.0 --params="'/InstallDir:C:\Program Files\dotnet\dotnetfx'" || echo "Already installed"
           dotnet pack descarga-ciec-csharp/ \
           --configuration Release  --no-restore \
           -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} \
