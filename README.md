@@ -9,7 +9,7 @@ API sencilla para interactuar con el servicio de descarga masiva mediante CIEC d
 Install descarga-ciec-csharp
 
 ```bash
-NuGet\Install-Package descarga-ciec-csharp -Version 1.1.3
+NuGet\Install-Package descarga-ciec-csharp -Version 1.1.4
 ```
  ## Implementation
 
