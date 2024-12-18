@@ -42,9 +42,6 @@ jobs:
 
       - name: Generate NuGet package
         run: |
-          iwr https://chocolatey.org/install.ps1 -UseBasicP -OutFile install-choco.ps1; 
-          .\install-choco.ps1
-          choco install netfx-4.8-devpack --confirm
           dotnet pack descarga-ciec-csharp/ \
           --configuration Release \
           -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} \
