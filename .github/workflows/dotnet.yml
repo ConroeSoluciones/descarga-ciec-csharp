@@ -42,7 +42,7 @@ jobs:
           
       - name: Build the project
         run: |
-         dotnet build --configuration Release --no-restore
+         dotnet build --configuration Release
 
       - name: Generate NuGet package
         run: |
