@@ -46,7 +46,7 @@ jobs:
           .\install-choco.ps1
           choco install netfx-4.8-devpack --confirm
           dotnet pack descarga-ciec-csharp/ \
-          --configuration Release  --no-restore \
+          --configuration Release \
           -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} \
           -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp/ \
           -o packages
