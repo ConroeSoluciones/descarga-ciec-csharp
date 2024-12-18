@@ -24,6 +24,10 @@
     <AssemblyName>descarga-ciec-csharp</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\..\descarga-ciec-sdk\descarga-ciec-sdk\cs_logo.png">
       <Pack>True</Pack>
