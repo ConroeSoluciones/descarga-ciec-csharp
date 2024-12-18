@@ -42,8 +42,10 @@ jobs:
 
       - name: Generate NuGet package
         run: |
-          Invoke-WebRequest -Uri "https://download.microsoft.com/download/1/1/D/11D5D84D-7347-40B4-9D1A-F3D3A1778A57/NDP48-devpack-enu.exe" -OutFile "NDP48-devpack-enu.exe"
-          Start-Process -FilePath "NDP48-devpack-enu.exe" -ArgumentList "/quiet /install" -NoNewWindow -Wait
+          Set-ExecutionPolicy Bypass -Scope Process -Force; 
+          iwr https://chocolatey.org/install.ps1 -UseBasicP -OutFile install-choco.ps1; 
+          .\install-choco.ps1
+          choco install netfx-4.8-devpack --confirm
           dotnet pack descarga-ciec-csharp/ \
           --configuration Release  --no-restore \
           -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} \
