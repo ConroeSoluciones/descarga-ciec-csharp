@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.34526.175
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "descarga-ciec-sdk", "descarga-ciec-sdk\descarga-ciec-sdk.csproj", "{5F888606-330F-4A89-92C0-8ECD7C347976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "descarga-ciec-csharp", "descarga-ciec-sdk\descarga-ciec-csharp.csproj", "{5F888606-330F-4A89-92C0-8ECD7C347976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "descarga-ciec-sdk-test", "descarga-ciec-sdk-test\descarga-ciec-sdk-test.csproj", "{5A5ADD51-AA8B-4991-A6BF-56F887B4FD1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "descarga-ciec-csharp-test", "descarga-ciec-sdk-test\descarga-ciec-csharp-test.csproj", "{5A5ADD51-AA8B-4991-A6BF-56F887B4FD1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
