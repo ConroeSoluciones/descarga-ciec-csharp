@@ -726,7 +726,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
         /// </summary>
         /// <param name="response"></param>
         /// <returns></returns>
-        protected async Task<List<Metadata>> NewResultadosListAsync(Response response)
+        protected Task<List<Metadata>> NewResultadosListAsync(Response response)
         {
             List<Metadata> lst = new List<Metadata>();
             try
@@ -735,8 +735,6 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
                 {
                     throw new Exception("El response del json es nulo");
                 }
-
-                //LoggerService.LogDebug($"{response?.getAsJsonConsulta()}");
 
                 if (JsonValidator.IsValidJson(response.Json))
                 {
@@ -748,10 +746,9 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
             }
             catch (Exception)
             {
-                // LoggerService.LogError($"Error en mapear el json | {ex.Message}");
                 throw;
             }
-            return lst;
+            return Task.FromResult(lst);
         }
 
         /// <summary>

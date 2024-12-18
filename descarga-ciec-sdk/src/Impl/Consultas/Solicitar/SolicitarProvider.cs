@@ -285,11 +285,11 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
                     throw new Exception(msg);
                 }
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -334,11 +334,11 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
                     );
                 }
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

@@ -60,6 +60,11 @@ namespace descarga_ciec_sdk.src.Impl.Factories
         private string wsMethod = "";
 
         /// <summary>
+        /// 
+        /// </summary>
+        //private MediaType mediatType=MediaType.JSON;
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="wsSchema"></param>
@@ -133,7 +138,7 @@ namespace descarga_ciec_sdk.src.Impl.Factories
             NameValueCollection parametrosEncriptar = null;
 
             HttpMethod methodRequest = HttpMethod.Post;
-            MediaType mediatType = MediaType.JSON;
+            //mediatType = MediaType.JSON;
 
             NameValueCollection parameters = new NameValueCollection();
 
@@ -203,7 +208,7 @@ namespace descarga_ciec_sdk.src.Impl.Factories
                 if (parametros.getTipoPeticion().ToString() == "FORM_URLENCODED")
                 {
                     methodRequest = HttpMethod.Post;
-                    mediatType = MediaType.JSON;
+                    //= MediaType.JSON;
 
                     uriBuilder.Scheme = this.wsSchema;
                     uriBuilder.Host = this.wsHost;

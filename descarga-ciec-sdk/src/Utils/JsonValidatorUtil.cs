@@ -26,7 +26,7 @@ namespace descarga_ciec_sdk.src.Utils
                 JToken.Parse(jsonString);
                 return true;
             }
-            catch (JsonReaderException ex)
+            catch (JsonReaderException)
             {
                 return false;
             }

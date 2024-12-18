@@ -151,7 +151,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <summary>
         ///
         /// </summary>
-        private string search;
+        private readonly string search="";
 
         /// <summary>
         ///
@@ -183,15 +183,6 @@ namespace descarga_ciec_sdk.src.Models
         /// </summary>
         private Credenciales credecialesSAT;
 
-        /// <summary>
-        ///
-        /// </summary>
-        private string dataID;
-
-        /// <summary>
-        ///
-        /// </summary>
-        private string dataKey;
 
         /// <summary>
         ///
@@ -329,7 +320,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public string getSearch()
         {
-            return search;
+            return this.search;
         }
 
         /// <summary>
