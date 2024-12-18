@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <RootNamespace>descarga_ciec_sdk</RootNamespace>
+    <RootNamespace>descarga-ciec-csharp</RootNamespace>
     <Authors>Conroe Soluciones</Authors>
     <Company>Conroe Soluciones</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -21,6 +21,7 @@
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <Version>1.1.4</Version>
     <Product>descarga-ciec-csharp</Product>
+    <AssemblyName>descarga-ciec-csharp</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
