@@ -33,14 +33,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\descarga-ciec-sdk\descarga-ciec-sdk\cs_logo.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\..\descarga-ciec-sdk\descarga-ciec-sdk\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
     <None Include="..\License.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -56,6 +48,17 @@
     <PackageReference Include="System.IO.Compression" Version="4.3.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Text.Encodings.Web" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cs_logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
