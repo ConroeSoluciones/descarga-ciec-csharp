@@ -20,10 +20,4 @@
     <ProjectReference Include="..\descarga-ciec-sdk\descarga-ciec-sdk.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="descarga-ciec-sdk">
-      <HintPath>..\descarga-ciec-sdk\bin\Debug\net48\descarga-ciec-sdk.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
