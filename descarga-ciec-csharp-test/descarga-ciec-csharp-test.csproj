@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\descarga-ciec-sdk\descarga-ciec-csharp.csproj" />
+    <ProjectReference Include="..\descarga-ciec-csharp\descarga-ciec-csharp.csproj" />
   </ItemGroup>
 
 </Project>
