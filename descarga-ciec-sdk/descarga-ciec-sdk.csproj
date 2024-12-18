@@ -19,6 +19,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>cs_logo.png</PackageIcon>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <Version>1.1.4</Version>
+    <Product>descarga-ciec-csharp</Product>
   </PropertyGroup>
 
   <ItemGroup>
