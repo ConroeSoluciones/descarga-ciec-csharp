@@ -57,7 +57,7 @@ namespace descarga_ciec_sdk_test
         }
 
         /// <summary>
-        /// Definir los parametros para la consulta
+        /// Definir todos los parametros para la consulta
         /// </summary>
         private void SetParametrosConsulta()
         {
