@@ -6,10 +6,37 @@
     <Authors>Conroe Soluciones</Authors>
     <Company>Conroe Soluciones</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Title>Descarga-CIEC-SDK</Title>
-    <Description>SDK para la descarga masiva de CFDI a través del servicio CIEC de CSFacturacion</Description>
+    <Title>descarga-ciec-csharp</Title>
+    <Description>SDK para la descarga masiva de CFDI a través del servicio CIEC de CSFacturacion (Beta)</Description>
     <Copyright>Copyright (c) 2024 CSFacturacion &lt;sistemascs@csfacturacion.com&gt;</Copyright>
+    <PackageId>descarga-ciec-csharp</PackageId>
+    <AssemblyVersion>1.1.4</AssemblyVersion>
+    <FileVersion>1.1.4</FileVersion>
+    <RepositoryUrl>https://github.com/ConroeSoluciones/descarga-ciec-csharp</RepositoryUrl>
+    <PackageTags>SAT; CIEC; CFDI;</PackageTags>
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>cs_logo.png</PackageIcon>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <Version>1.1.4</Version>
+    <Product>descarga-ciec-csharp</Product>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\descarga-ciec-sdk\descarga-ciec-sdk\cs_logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\descarga-ciec-sdk\descarga-ciec-sdk\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\License.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CSharpier.Core" Version="0.30.2" />
