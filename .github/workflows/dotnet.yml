@@ -29,7 +29,6 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Pack project
       run: dotnet pack ./descarga-ciec-csharp/descarga-ciec-csharp.csproj --configuration Release --output --no-restore ./nupkg
-    - name: Publish the NuGet package
     env: 
        NUGET_API_KEY: ${ secrets.NUGET_API_KEY }
        run: dotnet nuget push ./nupkg/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
