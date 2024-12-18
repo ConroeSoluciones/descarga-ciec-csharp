@@ -31,5 +31,6 @@ jobs:
       run: dotnet pack ./descarga-ciec-csharp/descarga-ciec-csharp.csproj --configuration Release --no-restore --output ./nupkg
     - name: Publish the NuGet package   
       if: github.event_name == 'release'
-      run: dotnet nuget push ./nupkg/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+      run: dotnet nuget push nupkgs/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
 
