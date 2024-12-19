@@ -9,7 +9,7 @@ API sencilla para interactuar con el servicio de descarga masiva mediante CIEC d
 Install descarga_ciec_csharp
 
 ```bash
-dotnet add package descarga-ciec-csharp --version 1.1.3
+ NuGet\Install-Package descarga-ciec-csharp
 ```
  ## Implementation
 
@@ -60,9 +60,7 @@ Despues de solicitar la descarga se puede obtener el estatus y el total encontra
 
  while (!progreso.IsCompletado())
  {
-      Console.WriteLine("Estatus : ", progreso.GetStatus());
-      Console.WriteLine("Total XMLs : ", progreso.GetEncontrado());
-
+   //Espera hasta que se termine osea completado
  }
 
 ```
