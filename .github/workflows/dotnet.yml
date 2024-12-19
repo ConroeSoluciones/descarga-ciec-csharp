@@ -47,7 +47,10 @@ jobs:
       - name: Generate NuGet package
         run: |
           dotnet pack descarga-ciec-csharp --configuration Release -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp -o packages
+   
+      - name: List files in the packages directory
+        run: dir ./packages 
 
       - name: Publish NuGet package
         run: |
-         dotnet nuget push packages/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+         dotnet nuget push ./packages/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
