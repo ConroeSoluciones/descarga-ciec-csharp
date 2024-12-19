@@ -10,8 +10,10 @@
     <Description>SDK para la descarga masiva de CFDI a través del servicio CIEC de CSFacturacion (Beta)</Description>
     <Copyright>Copyright (c) 2024 CSFacturacion &lt;sistemascs@csfacturacion.com&gt;</Copyright>
     <PackageId>descarga-ciec-csharp</PackageId>
-    <AssemblyVersion>1.1.4</AssemblyVersion>
-    <FileVersion>1.1.4</FileVersion>
+    <AssemblyVersion>1.1.11</AssemblyVersion>
+
+    <FileVersion>1.1.11</FileVersion>
+
     <RepositoryUrl>https://github.com/ConroeSoluciones/descarga-ciec-csharp</RepositoryUrl>
     <PackageTags>SAT; CIEC; CFDI;</PackageTags>
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
@@ -19,8 +21,11 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>cs_logo.png</PackageIcon>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <Version>1.1.4</Version>
-    <Product>descarga-ciec-csharp</Product>
+    <Version>1.1.11</Version>
+	<EnablePackageValidation>true</EnablePackageValidation>
+
+
+	  <Product>descarga-ciec-csharp</Product>
     <AssemblyName>descarga-ciec-csharp</AssemblyName>
   </PropertyGroup>
 
