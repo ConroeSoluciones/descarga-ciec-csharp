@@ -3,6 +3,7 @@
 
 name: .NET
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
@@ -25,9 +26,8 @@ jobs:
     - name: Run tests
       run: |
          dotnet test /p:Configuration=Release --no-restore --no-build --verbosity normal
-
-generate-version:
-    workflow_dispatch:
+         
+ generate-version:
      runs-on: ubuntu-latest
      permissions:
        contents: write      
@@ -41,10 +41,10 @@ generate-version:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INITIAL_VERSION: 1.1.3
           DEFAULT_BUMP: patch
-    outputs:
+     outputs:
       new_version: ${{ steps.tab_bump.outputs.new_tag }}
      
-    package-and-publish:                  
+ package-and-publish:                  
        runs-on: windows-latest
        needs: generate-version
    
