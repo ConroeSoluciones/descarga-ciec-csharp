@@ -13,7 +13,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace descarga_ciec_sdk_test
 {
     /// <summary>
-    ///
+    /// Clase prueba
     /// </summary>
     public class DescargaCIECTest
     {
