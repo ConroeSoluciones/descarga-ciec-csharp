@@ -1,15 +1,21 @@
 # descarga-ciec-csharp
 
-API sencilla para interactuar con el servicio de descarga masiva mediante CIEC de CSFacturación
+API sencilla para interactuar con el servicio de descarga masiva mediante CIEC de CSFacturación en C#.
 
 
 
 ## Installation
 
-Install descarga_ciec_csharp
+ Install descarga_ciec_csharp using Package Manager
 
 ```bash
  NuGet\Install-Package descarga-ciec-csharp
+```
+
+ Install descarga_ciec_csharp using .NET CLI
+
+```bash
+dotnet add package descarga-ciec-csharp
 ```
  ## Implementation
 
@@ -21,7 +27,7 @@ Install descarga_ciec_csharp
 
 ```bash
 
-descarga_ciec_sdk.DescargaCIEC DescragaCIEC = new descarga_ciec_sdk.DescargaCIEC();
+DescargaCIEC DescragaCIEC = new DescargaCIEC();
 ConsultaParametrosBuilder parametrosBuilder = new ConsultaParametrosBuilder();
 
 // credenciales empresa ante el SAT
@@ -61,6 +67,8 @@ Despues de solicitar la descarga se puede obtener el estatus y el total encontra
  while (!progreso.IsCompletado())
  {
    //Espera hasta que se termine osea completado
+    Console.WriteLine("Estatus : ", progreso.GetStatus());
+    Console.WriteLine("Total XMLs : ", progreso.GetEncontrado());
  }
 
 ```

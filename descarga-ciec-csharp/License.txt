@@ -1,8 +1,61 @@
-Contrato de Licencia de Usuario Final ("Contrato")
-Por favor lea cuidadosamente este Contrato de Licencia de Usuario Final (“Contrato”) antes de dar click en el botón “Aceptar”, descargando o usando el paquete.
-Al dar click en el botón “Aceptar”, descargando o usando el paquete, acepta estar sujeto a los términos y condiciones de este contrato.
-Este contrato es un acuerdo legal entre usted (ya sea persona física o persona moral) y Conroe Soluciones, S.A. de C.V. y regula el uso del paquete puesta a su disposición por Conroe Soluciones, S.A. de C.V.
-Si no está de acuerdo con los términos y condiciones de este Contrato, no haga click en el botón “Yo Acepto” y no descargue ni utilice el paquete.
-El paquete es licenciado, no vendida, a usted por Conroe Soluciones, S.A. de C.V. para uso estrictamente de acuerdo a los términos de este contrato.
-Licencia
-Conroe Soluciones, S.A. de C.V. le otorga una licencia revocable, no exclusiva, intransferible, limitada para descargar, instalar y usar el paquete estrictamente de acuerdo a los términos de este Contrato.
+
+Licencia MIT
+
+Derechos de autor (c) 2024 Conroe Soluciones
+
+Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia
+de este software y los archivos de documentación asociados (el "Software"), para
+utilizar el Software sin restricciones, incluyendo sin limitación los derechos
+de usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y/o
+vender copias del Software, y a permitir a las personas a quienes se les proporcione
+el Software hacerlo, sujeto a las siguientes condiciones:
+
+El aviso de derechos de autor anterior y este aviso de permiso deben incluirse en todas
+las copias o partes sustanciales del Software.
+
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O
+IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD,
+APTITUD PARA UN PROPÓSITO PARTICULAR E INFRACCIÓN. EN NINGÚN CASO LOS AUTORES O
+TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES POR NINGÚN RECLAMO, DAÑOS U OTRA
+RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRO TIPO, QUE SURJA DE,
+FUERA O EN CONEXIÓN CON EL SOFTWARE O EL USO U OTRO TIPO DE ACCIONES EN EL SOFTWARE.
+
+Términos Adicionales para Uso en México:
+Este software está destinado a ser utilizado en la descarga de documentos CFDI del SAT
+en cumplimiento con las regulaciones fiscales mexicanas. Los usuarios son responsables
+de asegurar que su uso de este software cumpla con todas las leyes y regulaciones
+aplicables respecto al uso y almacenamiento de documentos CFDI. Los autores no son responsables
+por ningún problema legal que surja del uso de este software.
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+
+MIT License
+
+Copyright (c) 2024 Conroe Soluciones
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Additional Terms for Use in Mexico:
+This software is intended for use in downloading CFDI documents from the SAT
+in compliance with Mexican tax regulations. Users are responsible for ensuring
+that their use of this software complies with all applicable laws and regulations
+regarding the use and storage of CFDI documents. The authors are not responsible
+for any legal issues arising from the use of this software.
