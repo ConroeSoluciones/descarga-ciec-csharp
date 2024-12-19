@@ -4,6 +4,11 @@
 name: .NET
 on:
  workflow_dispatch:
+   inputs:
+      generate-version:
+        description: 'Generate and publish new version'
+        required: true
+        default: 'yes'
  push:
     branches: [ "main" ]
  pull_request:
@@ -23,9 +28,10 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test /p:Configuration=Release --no-restore --no-build --verbosity normal
       
  generate-version:
+    if: ${{ github.event.inputs.generate-version == 'yes' }}
     runs-on: ubuntu-latest
     needs: build
     permissions:
