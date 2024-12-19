@@ -139,7 +139,8 @@ namespace descarga_ciec_sdk_test
 
         /// <summary>
         /// Obtener el resultado de la consulta por número de página
-        /// Failled        /// </summary>
+        /// Failled  
+        /// </summary>
         /// <exception cref="ArgumentException"></exception>
         [Fact]
         public void Get_Resultado_Paginas_Returns_ReturnException_Failled()
