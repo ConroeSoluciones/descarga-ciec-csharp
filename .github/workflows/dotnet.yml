@@ -5,7 +5,7 @@ name: .NET
 on:
  workflow_dispatch:
    inputs:
-      generate-version:
+      reason:
         description: 'Generate and publish new version'
         required: true
         default: 'yes'
