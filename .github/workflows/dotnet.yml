@@ -9,7 +9,7 @@ on:
    # branches: [ "main" ]
 
 jobs:
-  build-generate-version:
+  generate-version:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -28,9 +28,9 @@ jobs:
     outputs:
       new_version: ${{ steps.tab_bump.outputs.new_tag }}
 
-  package-and-publish:
+  package-and-publish-lib:
     runs-on: windows-latest
-    needs: build-generate-version
+    needs: generate-version
 
     steps:
       - uses: actions/checkout@v2
