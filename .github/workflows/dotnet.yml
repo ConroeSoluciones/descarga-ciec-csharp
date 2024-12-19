@@ -50,4 +50,4 @@ jobs:
 
       - name: Publish NuGet package
         run: | 
-         dotnet nuget push descarga-ciec-csharp/packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+         dotnet nuget push bin/Release/packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
