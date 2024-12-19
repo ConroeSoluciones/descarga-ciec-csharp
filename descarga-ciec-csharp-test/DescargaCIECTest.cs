@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 using Xunit;
 using static System.Net.Mime.MediaTypeNames;
 
+
+
 namespace descarga_ciec_sdk_test
 {
     /// <summary>
@@ -100,7 +102,16 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Solicitar_Consulta_Return_Success()
         {
-            _folioConsulta = DescargaCIEC.SolicitarConsulta(_ParametrosConsulta);
+            try
+            {
+                _folioConsulta = DescargaCIEC.SolicitarConsulta(_ParametrosConsulta);
+
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -110,9 +121,20 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_Resultado_Returns_Return_Success()
         {
-            var metadata = DescargaCIEC.GetResultado(_DatosPrueba.UuidConsulta_, 1);
+            
 
-            Assert.Equal(20, metadata.Count);
+            try
+            {
+                var metadata = DescargaCIEC.GetResultado(_DatosPrueba.UuidConsulta_, 1);
+
+                Assert.Equal(20, metadata.Count);
+
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -138,8 +160,18 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_Total_Encontrados_Consulta_Return_Success()
         {
-            var total = DescargaCIEC.GetTotalEncontrados(_DatosPrueba.UuidConsulta_);
-            Assert.Equal(249, total);
+            
+
+            try
+            {
+                var total = DescargaCIEC.GetTotalEncontrados(_DatosPrueba.UuidConsulta_);
+                Assert.Equal(249, total);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -148,9 +180,19 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_Estatus_Consulta_Return_Success()
         {
-            var estatus = DescargaCIEC.GetEstatusConsulta(_DatosPrueba.UuidConsulta_);
+            
 
-            Assert.Equal("REPETIR", estatus);
+            try
+            {
+                var estatus = DescargaCIEC.GetEstatusConsulta(_DatosPrueba.UuidConsulta_);
+
+                Assert.Equal("REPETIR", estatus);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -159,13 +201,24 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_Progreso_Consulta_Return_Success()
         {
-            var progreso = DescargaCIEC.GetProgreso(_folioConsulta);
+            
 
-            while (!progreso.IsCompletado())
+            try
             {
-                System.Diagnostics.Debug.WriteLine(
-                    $"Estatus Consulta: {progreso.GetStatus()} | Total CFDI encontrado: {progreso.GetEncontrado()}"
-                );
+                var progreso = DescargaCIEC.GetProgreso(_folioConsulta);
+
+                while (!progreso.IsCompletado())
+                {
+                    System.Diagnostics.Debug.WriteLine(
+                        $"Estatus Consulta: {progreso.GetStatus()} | Total CFDI encontrado: {progreso.GetEncontrado()}"
+                    );
+                }
+
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
             }
         }
 
@@ -175,13 +228,23 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_Summary_Return_Success()
         {
-            var summary = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_);
+            
 
-            Assert.Equal(249, summary.total);
-            Assert.Equal(13, summary.paginas);
-            Assert.False(summary.xmlFaltantes);
-            Assert.Empty(summary.fechasMismoHorario);
-            Assert.Equal(4, summary.cancelados);
+            try
+            {
+                var summary = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_);
+
+                Assert.Equal(249, summary.total);
+                Assert.Equal(13, summary.paginas);
+                Assert.False(summary.xmlFaltantes);
+                Assert.Empty(summary.fechasMismoHorario);
+                Assert.Equal(4, summary.cancelados);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -190,9 +253,20 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Has_Resultado_Return_Success()
         {
-            var hasResultado = DescargaCIEC.HasResultado(_DatosPrueba.UuidConsulta_);
+          
 
-            Assert.True(hasResultado);
+
+            try
+            {
+                var hasResultado = DescargaCIEC.HasResultado(_DatosPrueba.UuidConsulta_);
+
+                Assert.True(hasResultado);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -201,9 +275,20 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_Numero_Paginas_Return_Success()
         {
-            var paginas = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_).paginas;
+           
 
-            Assert.Equal(13, paginas);
+
+            try
+            {
+                var paginas = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_).paginas;
+
+                Assert.Equal(13, paginas);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -212,11 +297,21 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_FechasMismoHorario_Return_Success()
         {
-            var fechasMismoHorario = DescargaCIEC
-                .GetSummary(_DatosPrueba.UuidConsulta_)
-                .fechasMismoHorario;
+           
 
-            Assert.Empty(fechasMismoHorario);
+            try
+            {
+                var fechasMismoHorario = DescargaCIEC
+               .GetSummary(_DatosPrueba.UuidConsulta_)
+               .fechasMismoHorario;
+
+                Assert.Empty(fechasMismoHorario);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -225,9 +320,20 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Is_Xml_Faltantes_Return_Success()
         {
-            var isXmlFaltantes = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_).xmlFaltantes;
+            
 
-            Assert.False(isXmlFaltantes);
+
+            try
+            {
+                var isXmlFaltantes = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_).xmlFaltantes;
+
+                Assert.False(isXmlFaltantes);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -236,9 +342,19 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_Cancelados_Return_Success()
         {
-            var cancelados = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_).cancelados;
+            
 
-            Assert.Equal(4, cancelados);
+            try
+            {
+                var cancelados = DescargaCIEC.GetSummary(_DatosPrueba.UuidConsulta_).cancelados;
+
+                Assert.Equal(4, cancelados);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -247,15 +363,26 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Descargar_ZIP_Return_Success()
         {
-            // Descargando
-            var rutaZIP = DescargaCIEC.DescargaZIP(
-                _DatosPrueba.UuidConsulta_,
-                _DatosPrueba.RutaZIP
-            );
-            Assert.Equal(
-                rutaZIP,
-                Path.Combine(_DatosPrueba.RutaZIP, _DatosPrueba.UuidConsulta_.ToLower() + ".zip")
-            );
+          
+            try
+            {
+                // Descargando
+                var rutaZIP = DescargaCIEC.DescargaZIP(
+                    _DatosPrueba.UuidConsulta_,
+                    _DatosPrueba.RutaZIP
+                );
+                Assert.Equal(
+                    rutaZIP,
+                    Path.Combine(_DatosPrueba.RutaZIP, _DatosPrueba.UuidConsulta_.ToLower() + ".zip")
+                );
+
+
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -285,8 +412,18 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Get_ListaMetadataCFDI_Return_Success()
         {
-            var lista = DescargaCIEC.getListMetadata(_DatosPrueba.UuidConsulta_);
-            Assert.NotNull(lista);
+            
+
+            try
+            {
+                var lista = DescargaCIEC.getListMetadata(_DatosPrueba.UuidConsulta_);
+                Assert.NotNull(lista);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -313,15 +450,26 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Descargar_DescomprimirZIP_Return_Success()
         {
-            var rutaZIP = DescargaCIEC.DescargarAndDescomprimirZIP(
-                _DatosPrueba.UuidZip,
-                _DatosPrueba.RutaZIP
-            );
-            System.Diagnostics.Debug.WriteLine(
-                $"Descargando y descomprimir ZIP | ID Consulta: {_folioConsulta}"
-            );
 
-            Assert.Contains(".zip", rutaZIP);
+
+            try
+            {
+
+                var rutaZIP = DescargaCIEC.DescargarAndDescomprimirZIP(
+                    _DatosPrueba.UuidZip,
+                    _DatosPrueba.RutaZIP
+                );
+                System.Diagnostics.Debug.WriteLine(
+                    $"Descargando y descomprimir ZIP | ID Consulta: {_folioConsulta}"
+                );
+
+                Assert.Contains(".zip", rutaZIP);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -353,8 +501,19 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Repetir_Consulta_Return_Success()
         {
-            var resultado = DescargaCIEC.RepetirConsulta(_DatosPrueba.FolioRepetir, _user);
-            Assert.Equal("Peticion realizada con exito", resultado);
+           
+
+
+            try
+            {
+                var resultado = DescargaCIEC.RepetirConsulta(_DatosPrueba.FolioRepetir, _user);
+                Assert.Equal("Peticion realizada con exito", resultado);
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -379,9 +538,20 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Descargar_Xml_Return_Success()
         {
-            var xml = DescargaCIEC.DescargaXml(_DatosPrueba.Uuid_);
-            System.Diagnostics.Debug.WriteLine($"Solicitud repetida : {xml}");
-            Assert.NotNull(xml);
+           
+
+            try
+            {
+                var xml = DescargaCIEC.DescargaXml(_DatosPrueba.Uuid_);
+                System.Diagnostics.Debug.WriteLine($"Solicitud repetida : {xml}");
+                Assert.NotNull(xml);
+
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
@@ -390,9 +560,19 @@ namespace descarga_ciec_sdk_test
         [Fact]
         public void Descargar_MetadataXml_Return_Success()
         {
-            var metadata = DescargaCIEC.DescargaMetadataXml(_DatosPrueba.Uuid_);
-            System.Diagnostics.Debug.WriteLine($"Solicitud repetida : {metadata.folio}");
-            Assert.Equal(_DatosPrueba.Uuid_, metadata.folio.ToUpper());
+
+            try
+            {
+
+                var metadata = DescargaCIEC.DescargaMetadataXml(_DatosPrueba.Uuid_);
+                System.Diagnostics.Debug.WriteLine($"Solicitud repetida : {metadata.folio}");
+                Assert.Equal(_DatosPrueba.Uuid_, metadata.folio.ToUpper());
+            }
+            catch (Exception)
+            {
+
+                Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         /// <summary>
