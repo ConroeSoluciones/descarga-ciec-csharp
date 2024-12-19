@@ -10,9 +10,9 @@
     <Description>SDK para la descarga masiva de CFDI a través del servicio CIEC de CSFacturacion (Beta)</Description>
     <Copyright>Copyright (c) 2024 CSFacturacion &lt;sistemascs@csfacturacion.com&gt;</Copyright>
     <PackageId>descarga-ciec-csharp</PackageId>
-    <AssemblyVersion>1.1.11</AssemblyVersion>
+    <AssemblyVersion>1.1.13</AssemblyVersion>
 
-    <FileVersion>1.1.11</FileVersion>
+    <FileVersion>1.1.13</FileVersion>
 
     <RepositoryUrl>https://github.com/ConroeSoluciones/descarga-ciec-csharp</RepositoryUrl>
     <PackageTags>SAT; CIEC; CFDI;</PackageTags>
@@ -21,7 +21,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>cs_logo.png</PackageIcon>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <Version>1.1.11</Version>
+    <Version>1.1.13</Version>
 	<EnablePackageValidation>true</EnablePackageValidation>
 
 
@@ -38,13 +38,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\License.txt">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CSharpier.Core" Version="0.30.2" />
     <PackageReference Include="Mono.HttpUtility" Version="1.0.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -57,6 +50,10 @@
 
   <ItemGroup>
     <None Update="cs_logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="License.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

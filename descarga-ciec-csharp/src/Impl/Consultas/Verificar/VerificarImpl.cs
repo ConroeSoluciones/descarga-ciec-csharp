@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using descarga_ciec_sdk.src.Enums;
 using descarga_ciec_sdk.src.Impl.Https;
@@ -214,12 +216,6 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
                     response.Json
                 );
 
-                //if (responseProgreso.estado.ToString() == "REPETIR")
-                //{
-                //    throw new Exception(
-                //        $"Por el momento no podemos repetir la consulta {_idConsulta}"
-                //    );
-                //}
 
                 _estado = responseProgreso.estado.ToString();
                 _encontrado = responseProgreso.encontrados;
@@ -268,10 +264,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
                 response.Result.Json
             );
 
-            //if (responseProgreso.estado.ToString() == "REPETIR")
-            //{
-            //    throw new Exception($"Por el momento no podemos repetir la consulta {_idConsulta}");
-            //}
+
 
             _estado = responseProgreso.estado.ToString();
             _encontrado = responseProgreso.encontrados;
@@ -842,18 +835,22 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
         /// <returns></returns>
         public int GetEncontrado()
         {
-            if (_response != null)
-            {
-                ResponseProgreso responseProgreso = JsonConvert.DeserializeObject<ResponseProgreso>(
-                    _response.Json
-                );
-                _encontrado = responseProgreso.encontrados;
-            }
-            else
+            if (_response == null)
             {
                 GetStatus();
             }
-            return this._encontrado;
+
+            return _encontrado; 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ResponseProgreso GetReposnseProgreso()
+        {
+
+            return this._responseProgreso;
         }
     }
 }
