@@ -43,6 +43,10 @@ jobs:
       - name: Build the project
         run: |
          dotnet build --configuration Release
+    
+      - name: Run tests
+        run: |
+         dotnet test /p:Configuration=Release --no-restore --no-build --verbosity normal
 
       - name: Generate NuGet package
         run: |
