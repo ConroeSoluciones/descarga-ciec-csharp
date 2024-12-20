@@ -1,47 +1,55 @@
-name: .NET Build and Publish
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
+name: .NET
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version to publish'
-        required: true
 
 jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-    - name: Build
-      run: dotnet build --configuration Release 
-    - name: Test
-      run: dotnet test /p:Configuration=Release --no-restore --no-build --verbosity normal
-      
-
-
-  publish:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
-    needs: build
+  generate-version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '6.0.x'
-      - name: Restore dependencies
-        run: dotnet restore
-      - name: Pack
-        run: dotnet pack -c Release /p:PackageVersion=${{ github.event.inputs.version }} --no-restore --output ./output
-      - name: Publish to NuGet
+      - uses: actions/checkout@v2
+
+      - name: GitHub Tag Bump
+        id: tab_bump
+        uses: anothrNick/github-tag-action@1.71.0
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEYS }}
-        run: dotnet nuget push ./output/*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INITIAL_VERSION: 1.1.3
+          DEFAULT_BUMP: patch
+
+    outputs:
+      new_version: ${{ steps.tab_bump.outputs.new_tag }}
+
+  package-and-publish-lib:
+    runs-on: windows-latest
+    needs: generate-version
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+          
+      - name: Build the project
+        run: |
+         dotnet build --configuration Release
+
+      - name: Generate NuGet package
+        run: |
+          dotnet pack descarga-ciec-csharp --configuration Release -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp -o packages
+   
+      - name: List files in the packages directory
+        run: dir ./packages 
+
+      - name: Publish NuGet package
+        run: |
+         foreach($file in (Get-ChildItem ./packages -Recurse -Include *.nupkg)) {
+              dotnet nuget push $file --api-key "${{ secrets.NUGET_API_KEYS }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
