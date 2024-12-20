@@ -3,13 +3,13 @@
 
 name: .NET
 on:
- push: 
-  branches: main
- workflow_dispatch: 
-  inputs: 
-   manualInput: 
-   description: 'Manual Input'
-   required: true
+  push: 
+   branches: main
+  workflow_dispatch: 
+   inputs: 
+    manualInput: 
+    description: 'Manual Input'
+    required: true
 
 jobs:
  build:
