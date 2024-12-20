@@ -1,6 +1,6 @@
 # descarga-ciec-csharp
 
-API sencilla para interactuar con el servicio de descarga masiva mediante CIEC de CSFacturación en C#.
+API sencilla para interactuar con el servicio de descarga masiva mediante CIEC de CSFacturación en C# (CSharp).
 
 
 
