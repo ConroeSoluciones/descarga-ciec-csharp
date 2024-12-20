@@ -3,7 +3,6 @@ on:
     inputs:
       name:
         description: 'Generate and publish new version'
-        required: true
         default: 'No'
         type: choice
         options:
