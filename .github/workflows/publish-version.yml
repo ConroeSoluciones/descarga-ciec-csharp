@@ -4,10 +4,6 @@
 name: .NET
 on:
  workflow_dispatch:
-     inputs:
-      reason:
-          description: 'Generate and publish new version'
-          required: true
           
 jobs:
   generate-version:
