@@ -4,7 +4,6 @@ on:
     inputs:
       name:
         description: 'Generate and publish new version'
-        default: true
 
 jobs:
   generate-version:
