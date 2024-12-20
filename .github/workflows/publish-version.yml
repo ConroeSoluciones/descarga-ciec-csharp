@@ -3,7 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Generate and publish new version'
+      description: 'Generate and publish new version'
+      type: boolean
+      required: true
 
 jobs:
   generate-version:
