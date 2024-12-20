@@ -3,11 +3,15 @@
 
 name: .NET
 on:
- workflow_dispatch:
-  inputs:
-      version:
-        description: 'Version to publish'
-        required: true
+  workflow_dispatch:
+      inputs:
+       reason:
+          description: 'Generate and publish new version'
+          required: true
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   generate-version:
