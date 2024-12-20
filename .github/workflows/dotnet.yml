@@ -3,14 +3,13 @@
 
 name: .NET
 on:
- workflow_dispatch:
-    inputs:
-      branch:
-        description: 'The branch to build'
-        required: true
-      environment:
-        description: 'The environment to deploy to'
-        required: false
+ push: 
+  branches: main
+ workflow_dispatch: 
+  inputs: 
+   manualInput: 
+   description: 'Manual Input'
+   required: true
 
 jobs:
  build:
