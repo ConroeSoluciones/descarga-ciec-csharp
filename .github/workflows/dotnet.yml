@@ -8,11 +8,12 @@ on:
   pull_request:
     branches: [ "main" ]
   
+  
   workflow_dispatch:
-      inputs:
-       manualInput: 
-       description: 'Manual Input'
-       required: true
+   inputs:
+    manualInput: 
+      description: 'Manual Input'
+      required: true
 
 jobs:
  build:
