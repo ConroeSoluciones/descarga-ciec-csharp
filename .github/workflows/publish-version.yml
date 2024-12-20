@@ -4,11 +4,8 @@ on:
     inputs:
       name:
         description: 'Generate and publish new version'
-        default: 'No'
-        type: choice
-        options:
-        - No
-        - Yes
+        required: true
+        default: false
 
 jobs:
   generate-version:
