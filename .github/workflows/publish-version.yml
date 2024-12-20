@@ -7,11 +7,12 @@ on:
   inputs:
       name:
         description: 'Generate and publish new version?'
-        default: false
+        type: string
         required: true
 
 jobs:
   generate-version:
+    if: ${{ github.event.inputs.customerName }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
