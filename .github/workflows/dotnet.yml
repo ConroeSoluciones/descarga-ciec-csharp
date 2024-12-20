@@ -3,7 +3,12 @@
 
 name: .NET-DEPLOY-PUBLISH
 on:
- workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
+  workflow_dispatch:
         inputs:
          configuration:
            description: 'Generate and publish new version'
