@@ -45,7 +45,6 @@ jobs:
       new_version: ${{ steps.tab_bump.outputs.new_tag }}
 
  package-and-publish-lib:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: windows-latest
     needs: generate-version
     steps:
@@ -61,6 +60,7 @@ jobs:
          dotnet build --configuration Release
 
       - name: Generate NuGet package
+        if: ${{ github.event_name == 'workflow_dispatch'  }}
         run: |
           dotnet pack descarga-ciec-csharp --configuration Release -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp -o packages
    
@@ -68,6 +68,7 @@ jobs:
         run: dir ./packages 
 
       - name: Publish NuGet package
+        if: ${{ github.event_name == 'workflow_dispatch'  }}
         run: |
          foreach($file in (Get-ChildItem ./packages -Recurse -Include *.nupkg)) {
               dotnet nuget push $file --api-key "${{ secrets.NUGET_API_KEYS }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
