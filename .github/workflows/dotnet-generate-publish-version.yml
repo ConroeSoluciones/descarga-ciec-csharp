@@ -5,14 +5,13 @@
 name: .NET
 on:
   workflow_dispatch:
-      inputs:
-       reason:
-          description: 'Generate and publish new version'
-          required: true
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Generate and publish new version'  
 
 jobs:
   generate-version:
