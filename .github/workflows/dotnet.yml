@@ -3,11 +3,7 @@
 
 name: .NET-DEPLOY-PUBLISH
 on:
-  workflow_dispatch:
-   inputs:
-    manualInput: 
-      description: 'Generate and publish new version'
-      required: true
+ workflow_dispatch:
 
 jobs:
  build:
