@@ -9,10 +9,6 @@ on:
         description: Generate and publish new version
         type: string
         required: true
-   push:
-    branches: [ "main" ]
-   pull_request:
-    branches: [ "main" ]
 
 jobs:
  build:
