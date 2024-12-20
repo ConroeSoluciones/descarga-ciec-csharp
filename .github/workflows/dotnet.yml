@@ -22,9 +22,11 @@ jobs:
       run: dotnet build --configuration Release 
     - name: Test
       run: dotnet test /p:Configuration=Release --no-restore --no-build --verbosity normal
+      
 
  generate-version:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch'  }}
     needs: build
     permissions:
       contents: write
@@ -41,7 +43,6 @@ jobs:
           DEFAULT_BUMP: patch
 
     outputs:
-      if: ${{ github.event_name == 'workflow_dispatch'  }}
       new_version: ${{ steps.tab_bump.outputs.new_tag }}
 
  package-and-publish-lib:
@@ -60,7 +61,6 @@ jobs:
          dotnet build --configuration Release
 
       - name: Generate NuGet package
-        if: ${{ github.event_name == 'workflow_dispatch'  }}
         run: |
           dotnet pack descarga-ciec-csharp --configuration Release -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} -p:RepositoryUrl=https://github.com/ConroeSoluciones/descarga-ciec-csharp -o packages
    
@@ -68,7 +68,6 @@ jobs:
         run: dir ./packages 
 
       - name: Publish NuGet package
-        if: ${{ github.event_name == 'workflow_dispatch'  }}
         run: |
          foreach($file in (Get-ChildItem ./packages -Recurse -Include *.nupkg)) {
               dotnet nuget push $file --api-key "${{ secrets.NUGET_API_KEYS }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
