@@ -24,7 +24,6 @@ jobs:
       run: dotnet test /p:Configuration=Release --no-restore --no-build --verbosity normal
 
  generate-version:
-    if: ${{ github.event_name == 'workflow_dispatch'  }}
     runs-on: ubuntu-latest
     needs: build
     permissions:
@@ -42,6 +41,7 @@ jobs:
           DEFAULT_BUMP: patch
 
     outputs:
+      if: ${{ github.event_name == 'workflow_dispatch'  }}
       new_version: ${{ steps.tab_bump.outputs.new_tag }}
 
  package-and-publish-lib:
@@ -70,5 +70,5 @@ jobs:
       - name: Publish NuGet package
         run: |
          foreach($file in (Get-ChildItem ./packages -Recurse -Include *.nupkg)) {
-              dotnet nuget push $file --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+              dotnet nuget push $file --api-key "${{ secrets.NUGET_API_KEYS }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
           }
