@@ -835,10 +835,9 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
         /// <returns></returns>
         public int GetEncontrado()
         {
-            if (_response == null)
-            {
-                GetStatus();
-            }
+          
+             GetStatus();
+            
 
             return _encontrado; 
         }

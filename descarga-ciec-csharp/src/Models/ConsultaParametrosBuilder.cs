@@ -40,7 +40,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <summary>
         /// El tipo de información a buscar (xml/metadatas).
         /// </summary>
-        public string tipoSolicitud { get; private set; }
+        public string TipoSolicitud { get; private set; }
 
         /// <summary>
         /// Representa el tipo de comprobante.
@@ -99,27 +99,12 @@ namespace descarga_ciec_sdk.src.Models
         /// </summary>
         public List<string> UUIDConsultas { get; private set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public string TOKEN { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        public UriRequest UriRequest { get; private set; }
+       // public UriRequest UriRequest { get; private set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        public ConsultaParametrosBuilder addToken(string token)
-        {
-            this.TOKEN = token;
-
-            return this;
-        }
 
         /// <summary>
         ///
@@ -132,27 +117,15 @@ namespace descarga_ciec_sdk.src.Models
             return this;
         }
 
-        ///// <summary>
-        /////
-        ///// </summary>
-        ///// <param name="CSCredenciales"></param>
-        ///// <returns></returns>
-        //public ConsultaParametrosBuilder addCSCredenciales(User CSCredenciales)
-        //{
-        //    this.CSCredenciales = CSCredenciales;
-        //    return this;
-        //}
-
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="isXML"></param>
         /// <returns></returns>
-        public ConsultaParametrosBuilder addIsXMLMetadata(bool IsMetadata)
+        public bool addIsXMLMetadata(bool IsMetadata)
         {
-            this.IsMetadata = IsMetadata;
-            return this;
+           return this.IsMetadata = IsMetadata;
         }
 
         /// <summary>
@@ -160,10 +133,9 @@ namespace descarga_ciec_sdk.src.Models
         /// </summary>
         /// <param name="tipoDato"></param>
         /// <returns></returns>
-        public ConsultaParametrosBuilder addTipoDatoConsulta(string tipoDato)
+        public string addTipoDatoConsulta(string tipoDato)
         {
-            this.TipoDatoConsulta = tipoDato;
-            return this;
+            return this.TipoDatoConsulta = tipoDato;
         }
 
         /// <summary>
@@ -173,8 +145,9 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public ConsultaParametrosBuilder setFiltroEstatusCFDI(EstatusCFDI estatus)
         {
-            this.EstatusCFDI = estatus;
+             this.EstatusCFDI = estatus;
             return this;
+
         }
 
         /// <summary>
@@ -272,7 +245,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public ConsultaParametrosBuilder addUriRequest(UriRequest uri)
         {
-            this.UriRequest = uri;
+           // this.UriRequest = uri;
 
             return this;
         }
@@ -290,7 +263,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <summary>
         /// Fecha final
         /// </summary>
-        private DateTime fechaFin;
+        //private DateTime fechaFin;
 
         /// <summary>
         /// Tipo de comprobante.
@@ -383,10 +356,11 @@ namespace descarga_ciec_sdk.src.Models
         /// </summary>
         /// <param name="fecha"></param>
         /// <returns></returns>
-        public ConsultaParametrosBuilder FechaFin(DateTime fecha)
+        public DateTime FechaFin(DateTime fecha)
         {
-            this.fechaFin = fecha;
-            return this;
+            //this.fechaFin = fecha;
+           return this.FechaFinal = fecha;
+
         }
 
         /// <summary>
@@ -484,7 +458,7 @@ namespace descarga_ciec_sdk.src.Models
 
         public DateTime getFechaInicio()
         {
-            return this.fechaInicio;
+            return this.FechaInicio;
         }
 
         /// <summary>
@@ -502,7 +476,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public DateTime getFechaFin()
         {
-            return this.fechaFin;
+            return this.FechaFinal;
         }
 
         /// <summary>
@@ -520,17 +494,19 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public Movimiento getMovimiento()
         {
-            return this.movimiento;
+            return this.Movimiento;
         }
 
         /// <summary>
         ///
         /// </summary>
         /// <returns></returns>
-        public Movimiento setMovimiento(Movimiento movimiento)
+        public ConsultaParametrosBuilder setMovimiento(Movimiento movimiento)
         {
-            return this.movimiento = movimiento;
+            this.Movimiento = movimiento;
+            return this;
         }
+
 
         /// <summary>
         ///
@@ -554,9 +530,10 @@ namespace descarga_ciec_sdk.src.Models
         ///
         /// </summary>
         /// <returns></returns>
-        public TipoDocumento setTipoDocumento(TipoDocumento tipoDocumento)
+        public ConsultaParametrosBuilder setTipoDocumento(TipoDocumento tipoDocumento)
         {
-            return this.tipoDocumento = tipoDocumento;
+             this.tipoDocumento = tipoDocumento;
+            return this;
         }
 
         /// <summary>
@@ -584,8 +561,9 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public ConsultaParametrosBuilder setFechaInicio(DateTime fecha)
         {
-            this.fechaInicio = fecha;
+            this.FechaInicio = fecha;
             return this;
+
         }
 
         /// <summary>
@@ -595,8 +573,10 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public ConsultaParametrosBuilder setFechaFin(DateTime fecha)
         {
-            this.fechaFin = fecha;
+            this.FechaFinal = fecha;
+
             return this;
+
         }
 
         /// <summary>

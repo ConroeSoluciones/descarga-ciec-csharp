@@ -14,11 +14,12 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Repetir
         public RepetirHandle() { }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
-        /// <param name="parametrosCS"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="UUID"></param>
+        /// <param name="user"></param>
         /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
         public string Handle(string UUID, User user)
         {
             if (UUID == null)

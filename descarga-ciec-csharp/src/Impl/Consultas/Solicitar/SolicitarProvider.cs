@@ -367,13 +367,13 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
                 }
 
                 //Son necesarias las credenciales de CS
-                if (parametrosCS?.CSCredenciales == null)
+                if (parametrosCS?.getCredencialesCS() == null)
                 {
                     throw new System.ArgumentNullException("Las credenciales de CS son requeridas");
                 }
 
                 //Son necesarias las credenciales del SAT
-                if (parametrosCS?.SATCredenciales == null)
+                if (parametrosCS?.getCredencialesSAT() == null)
                 {
                     throw new System.ArgumentNullException(
                         "Las credenciales de la empresa(SAT) son requeridas"
@@ -382,8 +382,8 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
 
                 //2. Generamos los datos necesario para hacer la solicitud
                 var request = _requestCIECFactory.SolicitudRequest(
-                    parametrosCS?.CSCredenciales,
-                    parametrosCS?.SATCredenciales,
+                    parametrosCS?.getCredencialesCS(),
+                    parametrosCS?.getCredencialesSAT(),
                     parametrosCS
                 );
 

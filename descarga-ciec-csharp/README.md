@@ -27,29 +27,31 @@ dotnet add package descarga-ciec-csharp
 
 ```bash
 
-DescargaCIEC DescragaCIEC = new DescargaCIEC();
+DescargaCIEC descargaCIEC = new DescargaCIEC();
 ConsultaParametrosBuilder parametrosBuilder = new ConsultaParametrosBuilder();
 
 // credenciales empresa ante el SAT
-Empresa empresa = new Empresa("rfcEmpresa", "credencial_SAT");
+Credenciales credenciales = new Credenciales("rfcEmpresa", "credencial_SAT");
 
 // credenciales de contratacion CSFacturacion
 User user = new User("rfcContratacion", "password");
 
 // construir parametros de consulta con ParametrosBuilder
 parametrosBuilder.setCredecialesContratacion(user);
-parametrosBuilder.setCredecialesSAT(empresa);
+parametrosBuilder.setCredecialesSAT(credenciales);
 parametrosBuilder.setFechaInicio(new DateTime(2024, 2, 1));
 parametrosBuilder.setFechaFin(new DateTime(2024, 3, 3));
 parametrosBuilder.setMovimiento(descarga_ciec_sdk.src.Enums.Movimiento.TODAS);
-parametrosBuilder.setFiltroEstatusCFDI(descarga_ciec_sdk.src.Enums.EstatusCFDI.TODOS;
+parametrosBuilder.setFiltroEstatusCFDI(descarga_ciec_sdk.src.Enums.EstatusCFDI.TODOS);
 parametrosBuilder.setTipoDocumento(descarga_ciec_sdk.src.Enums.TipoDocumento.CFDI);
 
 //Parametros               
 ConsultaParametros parametrosConsulta = new ConsultaParametros(parametrosBuilder);
 
 //Solicitar la consulta de descarga
-var folioConsulta = DescragaCIEC.SolicitarConsulta(parametrosConsulta);
+var folioConsulta = descargaCIEC.SolicitarConsulta(parametrosConsulta);
+
+
 
 
 ```
@@ -61,14 +63,14 @@ Despues de solicitar la descarga se puede obtener el estatus y el total encontra
 
 ```bash
 
- var progreso = DescargaCIEC.GetProgreso(folioConsulta);
+ var progreso = descargaCIEC.GetProgreso(folioConsulta);
 
 
  while (!progreso.IsCompletado())
  {
-   //Espera hasta que se termine osea completado
-    Console.WriteLine("Estatus : ", progreso.GetStatus());
-    Console.WriteLine("Total XMLs : ", progreso.GetEncontrado());
+   // Espera hasta que se termine osea completado
+      Console.WriteLine($"Estatus : {progreso.GetStatus()} ");
+      Console.WriteLine($"Total XMLs : {progreso.GetEncontrado()}");
  }
 
 ```
@@ -80,13 +82,15 @@ Se puede obtener el resumen de la consulta siempre y cuando este completado (con
 ```bash
 
 
-var resumen = DescargaCIEC.GetSummary(folioConsulta);
+//Resumen
 
- Console.WriteLine("Total XMLs: ", resumen.total);
- Console.WriteLine("Total Paginas: ", resumen.paginas);
- Console.WriteLine("Hay XMLs Faltantes: ",resumen.xmlFaltantes);
- Console.WriteLine("Hay XMLs con fechasMismoHorario: ",resumen.fechasMismoHorario);
- Console.WriteLine("Total XMLs Cancelados: ",resumen.cancelados);
+var resumen = descargaCIEC.GetSummary(folioConsulta);
+
+Console.WriteLine($"Total XMLs: {resumen.total}");
+Console.WriteLine($"Total Paginas: {resumen.paginas}");
+Console.WriteLine($"Hay XMLs Faltantes: {resumen.xmlFaltantes}");
+Console.WriteLine($"Hay XMLs con fechasMismoHorario: {resumen.fechasMismoHorario.Count}");
+Console.WriteLine($"Total XMLs Cancelados:  {resumen.cancelados}");
 
 ```
 
@@ -100,26 +104,31 @@ Para la obtención de los resultados usa los siguientes metodos usando el folio 
 
 ```bash
 
+
 //Para obtener resultado mediante paginas
-var metadata = DescargaCIEC.GetResultado(folioConsulta, numeroPgaina);
+// El uno (1) es el numero de pagina
+var metadata = descargaCIEC.GetResultado(folioConsulta, 1);
 
 // Usando el resumen
-for (int i = 0; i < DescargaCIEC.getSummary().paginas(); i++)
- {
+for (int i = 1; i < descargaCIEC.GetSummary(folioConsulta).paginas; i++)
+{
 
-    var resultadosCFDI = DescargaCIEC.GetResultado(folioConsulta, i);
-    foreach (var metadata in resultadosCFDI)
+    var resultadosCFDI = descargaCIEC.GetResultado(folioConsulta, i);
+    foreach (var meta in resultadosCFDI)
     {
         // Metadata XML
+         Console.WriteLine($"Metadata UUID: { meta.folio}");
+
     }
 }
 
 //Para obtener el de los XMLs mediante paginas
-var path = DescargaCIEC.DescargaZIP(folioConsulta, RutaZip);
+//Hay que tener en cuenta que se debe pasar la runta de la carpeta donde se guardara el ZIP
+var path = descargaCIEC.DescargaZIP(folioConsulta, "RutaZip");
 
 
 //Para obtener la lista de metadata 
-var listaMetada = DescargaCIEC.DescargaMetadataXml(folioConsulta);
+var listaMetada = descargaCIEC.GetListMetadata(folioConsulta);
 
 ```
 
@@ -128,7 +137,7 @@ var listaMetada = DescargaCIEC.DescargaMetadataXml(folioConsulta);
 
 
 //Descargar  ZIP y descomprimirlo usando el folio de la consulta
- var path = DescargaCIEC.DescargarAndDescomprimirZIP(folioConsulta, RutaZip);
+ var path = descargaCIEC.DescargarAndDescomprimirZIP(folioConsulta, "RutaZip");
 
 ```
 
@@ -166,5 +175,6 @@ var listaMetada = DescargaCIEC.DescargaMetadataXml(folioConsulta);
 
 [Descarga Masiva](https://cfdiau.sat.gob.mx/nidp/wsfed/ep?id=SATUPCFDiCon&sid=0&option=credential&sid=0)
 
+[CFDI](https://cfdiau.sat.gob.mx/nidp/wsfed/ep?id=SATUPCFDiCon&sid=0&option=credential&sid=0)
 
 [CIEC](https://cfdiau.sat.gob.mx/nidp/wsfed/ep?id=SATUPCFDiCon&sid=0&option=credential&sid=0)

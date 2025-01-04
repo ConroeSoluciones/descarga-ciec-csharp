@@ -9,6 +9,9 @@ using descarga_ciec_sdk.src.Models;
 
 namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SolicitarHandle
     {
         /// <summary>
@@ -37,19 +40,20 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
             return idConsulta;
         }
 
+
         /// <summary>
-        ///
+        /// 
         /// </summary>
         /// <param name="parametros"></param>
         /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
         public string HandleFolios(ConsultaParametros parametros)
         {
             string idConsulta = "";
 
             ISolicitarProvider solicitarCIECProvider = new SolicitarProvider();
-            var solicitar = solicitarCIECProvider.SolicitarFolios(parametros);
+            var solicitar = solicitarCIECProvider.SolicitarFolios(parametros).GetIDConsulta(); ;
 
-            idConsulta = solicitar.GetIDConsulta();
 
             if (string.IsNullOrWhiteSpace(idConsulta))
             {
@@ -62,7 +66,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
         /// <param name="parametros"></param>
         /// <returns></returns>
@@ -86,9 +90,9 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
-        /// <param name="parametros"></param>
+        /// <param name="IdConsulta"></param>
         /// <returns></returns>
         /// <exception cref="System.Exception"></exception>
         public ResponseResumen HandleSummary(string IdConsulta)
@@ -102,11 +106,14 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
             return solicitarCIECProvider.SolicitarSummary(IdConsulta);
         }
 
+
         /// <summary>
-        ///
+        /// 
         /// </summary>
-        /// <param name="parametrosCS"></param>
+        /// <param name="parametros"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
         public async Task<string> HandleAsync(
             ConsultaParametros parametros,
             CancellationToken cancellationToken
@@ -114,7 +121,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Solicitar
         {
             string idConsulta = "";
 
-            string rfcEmpresa = parametros.SATCredenciales.RFC;
+            string rfcEmpresa = parametros.getCredencialesSAT().RFC;
 
             ISolicitarProvider solicitarCIECProvider = new SolicitarProvider();
             var solicitar = await solicitarCIECProvider.SolicitarAsync(parametros);
