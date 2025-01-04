@@ -206,7 +206,7 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Descargar
         {
             string pathZIP = "";
 
-            string rfcEmpresa = parametrosCS.SATCredenciales.RFC;
+            string rfcEmpresa = parametrosCS.getCredencialesSAT().RFC;
 
             if (string.IsNullOrWhiteSpace(idConsulta))
             {

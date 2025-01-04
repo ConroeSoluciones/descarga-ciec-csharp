@@ -27,11 +27,5 @@ namespace descarga_ciec_sdk.src.Interfaces
         /// </summary>
         /// <returns></returns>
         string GetMensaje();
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
-        bool IsAutenticado();
     }
 }

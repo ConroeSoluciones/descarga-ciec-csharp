@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\descarga-ciec-csharp\descarga-ciec-csharp.csproj" />
+    <Reference Include="descarga-ciec-csharp">
+      <HintPath>..\descarga-ciec-csharp\bin\Release\net48\descarga-ciec-csharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

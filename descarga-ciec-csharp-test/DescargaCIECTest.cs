@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using descarga_ciec_sdk;
 using descarga_ciec_sdk.src.Models;
 using Newtonsoft.Json;
 using Xunit;
@@ -65,35 +66,57 @@ namespace descarga_ciec_sdk_test
         {
             _ParametrosBuilder = new ConsultaParametrosBuilder();
 
-            var datosTest = @"./resources/Data.json";
+            //var datosTest = @"./resources/Data.json";
 
-            if (File.Exists(datosTest))
-            {
-                _DatosPrueba = JsonConvert.DeserializeObject<DatosPrueba>(
-                    File.ReadAllText(datosTest)
-                );
-                _folioConsulta = _DatosPrueba.UuidConsulta_;
-            }
+            //if (File.Exists(datosTest))
+            //{
+            //    _DatosPrueba = JsonConvert.DeserializeObject<DatosPrueba>(
+            //        File.ReadAllText(datosTest)
+            //    );
+            //    _folioConsulta = _DatosPrueba.UuidConsulta_;
+            //}
 
-            var fileUser = @"./resources/User.json";
-            var fileCredenciales = @"./resources/Credenciales.json";
+            //var fileUser = @"./resources/User.json";
+            //var fileCredenciales = @"./resources/Credenciales.json";
 
-            if (File.Exists(fileUser) && File.Exists(fileCredenciales))
-            {
-                _user = JsonConvert.DeserializeObject<User>(File.ReadAllText(fileUser));
+            //if (File.Exists(fileUser) && File.Exists(fileCredenciales))
+            //{
+            //    _user = JsonConvert.DeserializeObject<User>(File.ReadAllText(fileUser));
 
-                _ParametrosBuilder.setCredecialesContratacion(_user);
-                _ParametrosBuilder.setCredecialesSAT(
-                    JsonConvert.DeserializeObject<Credenciales>(File.ReadAllText(fileCredenciales))
-                );
-            }
+            //    _ParametrosBuilder.setCredecialesContratacion(_user);
+            //    _ParametrosBuilder.setCredecialesSAT(
+            //        JsonConvert.DeserializeObject<Credenciales>(File.ReadAllText(fileCredenciales))
+            //    );
+            //}
+            //// credenciales empresa ante el SAT
+            //Credenciales credenciales = new Credenciales("CSO1304138Z0", "C0nR0E50");
 
-            _ParametrosBuilder.setFechaInicio(new DateTime(2024, 2, 1));
+            //// credenciales de contratacion CSFacturacion
+            // User user = new User("AAA010101AAA", "Iehee*th2036");
+            //_ParametrosBuilder.setFechaInicio(new DateTime(2024, 2, 1));
+            //_ParametrosBuilder.setFechaFin(new DateTime(2024, 3, 3));
+            //_ParametrosBuilder.setMovimiento(descarga_ciec_sdk.src.Enums.Movimiento.TODAS);
+            //_ParametrosBuilder.setFiltroEstatusCFDI(descarga_ciec_sdk.src.Enums.EstatusCFDI.TODOS);
+            //_ParametrosBuilder.setTipoDocumento(descarga_ciec_sdk.src.Enums.TipoDocumento.CFDI);
+            //_ParametrosConsulta = new ConsultaParametros(_ParametrosBuilder);
+
+
+            // credenciales empresa ante el SAT
+            Credenciales credenciales = new Credenciales("", "");
+
+            // credenciales de contratacion CSFacturacion
+            User user = new User("", "");
+
+            // construir parametros de consulta con ParametrosBuilder
+            _ParametrosBuilder.setCredecialesContratacion(user);
+            _ParametrosBuilder.setCredecialesSAT(credenciales);
+            _ParametrosBuilder.setFechaInicio(new DateTime(2022, 2, 1));
             _ParametrosBuilder.setFechaFin(new DateTime(2024, 3, 3));
             _ParametrosBuilder.setMovimiento(descarga_ciec_sdk.src.Enums.Movimiento.TODAS);
             _ParametrosBuilder.setFiltroEstatusCFDI(descarga_ciec_sdk.src.Enums.EstatusCFDI.TODOS);
             _ParametrosBuilder.setTipoDocumento(descarga_ciec_sdk.src.Enums.TipoDocumento.CFDI);
             _ParametrosConsulta = new ConsultaParametros(_ParametrosBuilder);
+
         }
 
         /// <summary>
@@ -107,12 +130,13 @@ namespace descarga_ciec_sdk_test
                 _folioConsulta = DescargaCIEC.SolicitarConsulta(_ParametrosConsulta);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 Assert.ThrowsAny<ArgumentException>(() => throw new ArgumentException());
             }
         }
+
 
         /// <summary>
         /// Obtener el resultado de la consulta por número de página
@@ -165,7 +189,9 @@ namespace descarga_ciec_sdk_test
 
             try
             {
-                var total = DescargaCIEC.GetTotalEncontrados(_DatosPrueba.UuidConsulta_);
+                var estatus = DescargaCIEC.GetEstatusConsulta("b0cab294-dab4-4f27-adc7-fd3cd788cff5");
+
+                var total = DescargaCIEC.GetTotalEncontrados("b0cab294-dab4-4f27-adc7-fd3cd788cff5");
                 Assert.Equal(249, total);
             }
             catch (Exception)
@@ -185,7 +211,9 @@ namespace descarga_ciec_sdk_test
 
             try
             {
-                var estatus = DescargaCIEC.GetEstatusConsulta(_DatosPrueba.UuidConsulta_);
+                _folioConsulta = DescargaCIEC.SolicitarConsulta(_ParametrosConsulta);
+
+                var estatus = DescargaCIEC.GetEstatusConsulta(_folioConsulta);
 
                 Assert.Equal("REPETIR", estatus);
             }
@@ -206,7 +234,9 @@ namespace descarga_ciec_sdk_test
 
             try
             {
-                var progreso = DescargaCIEC.GetProgreso(_folioConsulta);
+                var folioConsulta = DescargaCIEC.SolicitarConsulta(_ParametrosConsulta);
+
+                var progreso = DescargaCIEC.GetProgreso(folioConsulta);
 
                 while (!progreso.IsCompletado())
                 {
@@ -417,7 +447,7 @@ namespace descarga_ciec_sdk_test
 
             try
             {
-                var lista = DescargaCIEC.getListMetadata(_DatosPrueba.UuidConsulta_);
+                var lista = DescargaCIEC.GetListMetadata("ff213733-a908-4149-86e5-66641d53f7ce");
                 Assert.NotNull(lista);
             }
             catch (Exception)
@@ -436,7 +466,7 @@ namespace descarga_ciec_sdk_test
         {
             try
             {
-                var lista = DescargaCIEC.getListMetadata(_DatosPrueba.UuidInexistente);
+                var lista = DescargaCIEC.GetListMetadata(_DatosPrueba.UuidInexistente);
                 Assert.NotNull(lista);
             }
             catch (Exception)

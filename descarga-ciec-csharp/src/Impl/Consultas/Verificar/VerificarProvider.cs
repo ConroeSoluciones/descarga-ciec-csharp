@@ -148,13 +148,6 @@ namespace descarga_ciec_sdk.src.Impl.Consultas.Verificar
                 responseProgreso = JsonConvert.DeserializeObject<ResponseProgreso>(
                     response.Result.Json
                 );
-
-                //if (responseProgreso.estado.ToString() == "REPETIR")
-                //{
-                //    throw new Exception(
-                //        $"Por el momento no podemos repetir la consulta {IDConsulta}"
-                //    );
-                //}
             }
 
             return new VerificarImpl(

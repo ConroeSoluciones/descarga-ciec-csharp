@@ -13,105 +13,104 @@ namespace descarga_ciec_sdk.src.Models
         /// </summary>
         public ConsultaParametros() { }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public string TOKEN { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public string TOKEN { get; set; }
+
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public string TipoDatoConsulta { get; set; }
+
+        ///// <summary>
+        /////
+        ///// </summary>
+        //private string DataID { get; set; }
+
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public string DataKey { get; set; }
+
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public bool IsExportacionMasiva { get; set; }
+
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public bool IsMetadata { get; set; }
+
+        ///// <summary>
+        /////
+        ///// </summary>
+       // public Credenciales SATCredenciales { get; set; }
+
+        ///// <summary>
+        /////
+        //public User CSCredenciales { get; set; }
+
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public UriRequest UriRequest { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        public string TipoDatoConsulta { get; set; }
+       // public DateTime FechaInicio { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public string DataID { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public DateTime FechaFinal { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public string DataKey { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public EstatusCFDI EstatusCFDI { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public bool IsExportacionMasiva { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public TipoDocumento TipoDocumento { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public bool IsMetadata { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public string Complemento { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public Credenciales SATCredenciales { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public string BusquedaRFC { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public User CSCredenciales { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public List<string> BusquedaRFCs { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public UriRequest UriRequest { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public Movimiento Tipo { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public DateTime FechaInicio { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        private string folio { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public DateTime FechaFinal { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public List<string> Folios { get; set; } = new List<string>();
 
-        /// <summary>
-        ///
-        /// </summary>
-        public EstatusCFDI EstatusCFDI { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public TipoDocumento TipoDocumento { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public string Complemento { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public string BusquedaRFC { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public List<string> BusquedaRFCs { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Movimiento Tipo { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public string Folio { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public List<string> Folios { get; set; } = new List<string>();
-
-        /// <summary>
-        ///
-        /// </summary>
-        public string UUIDConsulta { get; set; }
+        ///// <summary>
+        /////
+        ///// </summary>
+        //public string UUIDConsulta { get; set; }
 
         /// <summary>
         ///
@@ -156,7 +155,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <summary>
         ///
         /// </summary>
-        public List<string> listaFolios { get; set; } = new List<string>();
+        private List<string> listaFolios { get; set; } = new List<string>();
 
         /// <summary>
         ///
@@ -203,7 +202,7 @@ namespace descarga_ciec_sdk.src.Models
             isMetadata = builder.getIsMetadata();
             credecialesContratacion = builder.getCredencialesContratacion();
             credecialesSAT = builder.getCredencialesSAT();
-            Folio = builder.Folio;
+            folio = builder.Folio;
         }
 
         /// <summary>
@@ -257,7 +256,7 @@ namespace descarga_ciec_sdk.src.Models
         /// <returns></returns>
         public string getFolio()
         {
-            return Folio;
+            return folio;
         }
 
         /// <summary>

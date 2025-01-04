@@ -23,6 +23,10 @@ namespace descarga_ciec_sdk
         {
             try
             {
+                if (consultaParametros == null)
+                {
+                    throw new Exception("Los parametros de consulta son requeridos");
+                }
                 SolicitarHandle solicitarHandle = new SolicitarHandle();
                 return solicitarHandle.Handle(consultaParametros);
             }
@@ -47,7 +51,7 @@ namespace descarga_ciec_sdk
                 }
 
                 //consultaParametros.Folios.Add(consultaParametros.getFolio());
-                consultaParametros.listaFolios.Add(folio);
+                //consultaParametros.listaFolios.Add(folio);
 
                 SolicitarHandle solicitarHandle = new SolicitarHandle();
                 return solicitarHandle.HandleFolios(consultaParametros);
@@ -71,7 +75,7 @@ namespace descarga_ciec_sdk
                 {
                     throw new Exception("El folio es requerido");
                 }
-                consultaParametros.listaFolios.Add(folio);
+                //consultaParametros.listaFolios.Add(folio);
 
                 SolicitarHandle solicitarHandle = new SolicitarHandle();
                 return solicitarHandle.HandleFolios(consultaParametros);
@@ -159,8 +163,14 @@ namespace descarga_ciec_sdk
         /// </summary>
         public string GetEstatusConsulta(string folioConsulta)
         {
+
             try
             {
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
+
                 VerificarHandle verificarHandle = new VerificarHandle();
                 return verificarHandle.Handle(folioConsulta).GetStatus();
             }
@@ -183,7 +193,7 @@ namespace descarga_ciec_sdk
                 {
                     throw new Exception("El folio es requerido");
                 }
-                consultaParametros.listaFolios.Add(folio);
+                // consultaParametros.listaFolios.Add(folio);
 
                 SolicitarHandle solicitarHandle = new SolicitarHandle();
                 return solicitarHandle.HandleFolios(consultaParametros);
@@ -223,8 +233,14 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public IVerificarImpl GetProgreso(string folioConsulta)
         {
+
             try
             {
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
+
                 VerificarHandle verificarHandle = new VerificarHandle();
                 return verificarHandle.Handle(folioConsulta);
             }
@@ -241,8 +257,14 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public int GetTotalEncontrados(string folioConsulta)
         {
+          
             try
             {
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
+
                 VerificarHandle verificarHandle = new VerificarHandle();
                 return verificarHandle.Handle(folioConsulta).GetEncontrado();
             }
@@ -259,8 +281,14 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public string GetEstadoConsulta(string folioConsulta)
         {
+      
             try
             {
+
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
                 VerificarHandle verificarHandle = new VerificarHandle();
                 return verificarHandle.Handle(folioConsulta).GetStatus();
             }
@@ -277,8 +305,13 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public string DescargaXml(string folio)
         {
+          
             try
             {
+                if (string.IsNullOrWhiteSpace(folio))
+                {
+                    throw new Exception("El folio es requerido");
+                }
                 DescargarHandle descargarHandle = new DescargarHandle();
                 return descargarHandle.DescargarXml(folio);
             }
@@ -295,8 +328,13 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public Metadata DescargaMetadataXml(string folio)
         {
+         
             try
             {
+                if (string.IsNullOrWhiteSpace(folio))
+                {
+                    throw new Exception("El folio es requerido");
+                }
                 DescargarHandle descargarHandle = new DescargarHandle();
                 return descargarHandle.DescargarMetadataXml(folio);
             }
@@ -314,8 +352,18 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public string DescargaZIP(string folioConsulta, string pathZIP)
         {
+       
             try
             {
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
+                if (string.IsNullOrEmpty(pathZIP))
+                {
+                    throw new Exception("La ruta del ZIP es requerida");
+                }
+
                 DescargarHandle descargarHandle = new DescargarHandle();
                 return descargarHandle.Descargar(folioConsulta, pathZIP);
             }
@@ -333,8 +381,13 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public string DescargarAndDescomprimirZIP(string folioConsulta, string pathZIP)
         {
+          
             try
             {
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
                 DescargarHandle descargarHandle = new DescargarHandle();
                 return descargarHandle.DescargarYdescomprimir(folioConsulta, pathZIP);
             }
@@ -349,10 +402,15 @@ namespace descarga_ciec_sdk
         /// </summary>
         /// <param name="folioConsulta"></param>
         /// <returns></returns>
-        public List<Metadata> getListMetadata(string folioConsulta)
+        public List<Metadata> GetListMetadata(string folioConsulta)
         {
+            
             try
             {
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
                 DescargarHandle descargarHandle = new DescargarHandle();
                 return descargarHandle.GetMetadatas(folioConsulta);
             }
@@ -370,8 +428,17 @@ namespace descarga_ciec_sdk
         /// <returns></returns>
         public string RepetirConsulta(string folioConsulta, User user)
         {
+            
             try
             {
+                if (string.IsNullOrWhiteSpace(folioConsulta))
+                {
+                    throw new Exception("El folio de la consulta es requerido");
+                }
+                if (user == null)
+                {
+                    throw new Exception("Las credenciales de contratacion son requeridas (User)");
+                }
                 RepetirHandle repetirHandle = new RepetirHandle();
                 return repetirHandle.Handle(folioConsulta, user);
             }
